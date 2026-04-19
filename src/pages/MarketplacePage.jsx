@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import PageHeader from '../components/layout/PageHeader'
+import { useAuth } from '../context/AuthContext'
+import { recordMarketLead } from '../services/marketplace'
 
 export default function MarketplacePage() {
   const [clicked, setClicked] = useState(false)
+  const { user } = useAuth()
 
-  const handleClick = () => {
-    // В будущем здесь можно отправлять запрос в Supabase для подсчета лидов
+  const handleClick = async () => {
     setClicked(true)
+    await recordMarketLead(user?.id)
     setTimeout(() => {
       alert("Спасибо за интерес! Мы свяжемся с вами в Telegram, как только раздел заработает.")
     }, 300)

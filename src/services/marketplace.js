@@ -132,3 +132,10 @@ export async function getEquipmentCategories() {
   if (error) throw error
   return [...new Set((data || []).map(e => e.category).filter(Boolean))].sort()
 }
+
+export async function recordMarketLead(userId) {
+  const { error } = await supabase.from('market_leads').insert([
+    { user_id: userId || null }
+  ])
+  if (error) console.error('Error tracking lead:', error)
+}
