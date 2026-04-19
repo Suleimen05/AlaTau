@@ -54,15 +54,24 @@ export function AuthProvider({ children }) {
 
       const res = await fetch(EDGE_FN, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
         body: JSON.stringify({ initData }),
       })
 
       const json = await res.json()
 
+      if (json.error) {
+        console.error('[Auth] Edge function error:', json.error)
+      }
+
       if (json.session) {
         await supabase.auth.setSession(json.session)
         setUser(json.user)
+      } else {
+        console.warn('[Auth] No session returned:', json)
       }
     } catch (err) {
       console.error('[Auth] Telegram login failed:', err)

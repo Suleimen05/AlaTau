@@ -4,13 +4,13 @@ import { useFavorites } from '../../context/FavoritesContext'
 const difficultyLabels = { easy: 'Лёгкий', medium: 'Средний', hard: 'Сложный' }
 const difficultyColors = { easy: '#34C759', medium: '#FF9500', hard: '#FF3B30' }
 
-export default function RouteCard({ route }) {
+export default function RouteCard({ route, onClick }) {
   const navigate = useNavigate()
   const { toggleFavorite, isFavorite } = useFavorites()
   const fav = isFavorite(route.id)
 
   return (
-    <div className="relative rounded-3xl overflow-hidden" style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
+    <div className="relative rounded-3xl overflow-hidden cursor-pointer" onClick={onClick} style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
       <img src={route.image} alt={route.title} className="w-full h-56 object-cover block" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
@@ -58,11 +58,11 @@ export default function RouteCard({ route }) {
 
         {/* Кнопка конструктора */}
         <button
-          onClick={() => navigate(`/trip-builder/${route.id}`)}
+          onClick={(e) => { e.stopPropagation(); navigate(`/trips`) }}
           className="mt-3 w-full py-2.5 rounded-2xl text-sm font-bold border-none cursor-pointer active:scale-[0.97] transition-transform"
           style={{ background: 'rgba(255,255,255,0.92)', color: '#1A1A1A' }}
         >
-          Собрать поездку
+          Афиша походов
         </button>
       </div>
     </div>

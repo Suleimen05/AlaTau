@@ -3,6 +3,7 @@ import PageHeader from '../components/layout/PageHeader'
 import FilterTabs from '../components/ui/FilterTabs'
 import RouteCard from '../components/routes/RouteCard'
 import FavoritesModal from '../components/routes/FavoritesModal'
+import RouteDetailsModal from '../components/routes/RouteDetailsModal'
 import { useFavorites } from '../context/FavoritesContext'
 import { getRoutes, getRegions } from '../services/routes'
 
@@ -21,6 +22,7 @@ export default function RoutesPage() {
   const [routes,        setRoutes]        = useState([])
   const [loading,       setLoading]       = useState(true)
   const [showFavorites, setShowFavorites] = useState(false)
+  const [selectedRoute, setSelectedRoute] = useState(null)
   const { favorites } = useFavorites()
 
   useEffect(() => {
@@ -97,7 +99,7 @@ export default function RoutesPage() {
           </div>
         )}
         {!loading && routes.map(route => (
-          <RouteCard key={route.id} route={route} />
+          <RouteCard key={route.id} route={route} onClick={() => setSelectedRoute(route)} />
         ))}
         {!loading && routes.length === 0 && (
           <div className="text-center py-16">
@@ -112,6 +114,9 @@ export default function RoutesPage() {
 
       {showFavorites && (
         <FavoritesModal routes={routes} onClose={() => setShowFavorites(false)} />
+      )}
+      {selectedRoute && (
+        <RouteDetailsModal route={selectedRoute} onClose={() => setSelectedRoute(null)} />
       )}
     </div>
   )

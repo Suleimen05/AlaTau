@@ -25,7 +25,7 @@ const tabs = [
   },
   {
     path: '/trips',
-    label: 'Поездки',
+    label: 'Афиша',
     icon: (active) => (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? '#34C759' : 'var(--color-text)'} strokeWidth="2" style={{ opacity: active ? 1 : 0.35 }}>
         <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />

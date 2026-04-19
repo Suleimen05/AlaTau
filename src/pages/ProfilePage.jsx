@@ -134,8 +134,8 @@ export default function ProfilePage() {
         <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--color-card)', boxShadow: 'var(--shadow-card)' }}>
           <MenuItem
             icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" strokeWidth="2"><path d="m8 3 4 8 5-5 5 15H2L8 3z" /></svg>}
-            label="Мои поездки"
-            sublabel={stats.trips > 0 ? `${stats.trips} поездок` : undefined}
+            label="Афиша походов"
+            sublabel="Сборные группы"
             onClick={() => navigate('/trips')}
           />
           <MenuItem
