@@ -18,7 +18,7 @@ const afishaTrips = [
     spotsLeft: 5,
     tag: 'weekend',
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
-    tgLink: 'https://t.me/telegram' // Сюда нужно будет вставить ссылку на пост
+    tgLink: 'https://t.me/ala_tauu' // Сюда нужно будет вставить ссылку на пост
   },
   {
     id: 'trip-2',
@@ -29,7 +29,7 @@ const afishaTrips = [
     spotsLeft: 12,
     tag: 'weekend',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
-    tgLink: 'https://t.me/telegram'
+    tgLink: 'https://t.me/ala_tauu'
   },
   {
     id: 'trip-3',
@@ -40,7 +40,7 @@ const afishaTrips = [
     spotsLeft: 2,
     tag: 'popular',
     image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=400&q=80',
-    tgLink: 'https://t.me/telegram'
+    tgLink: 'https://t.me/ala_tauu'
   }
 ]
 
